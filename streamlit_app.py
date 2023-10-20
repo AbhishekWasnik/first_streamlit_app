@@ -44,11 +44,10 @@ import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM fruit_load_list")
-my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
-
+my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
 
 
 
